@@ -1,17 +1,18 @@
 package controllers
 
 import (
+	"MoviesApp/app/models"
 	"fmt"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"MoviesApp/app/models"
 )
 
 func InsertMovie(movie models.Movie) error {
 	// Initialize the DynamoDB client
 	sess, err := session.NewSession(&aws.Config{
-		Region: aws.String("us-east-1"), // replace with your region
+		Region: aws.String("us-east-1"), //  region
 	})
 	if err != nil {
 		return fmt.Errorf("unable to create DynamoDB session: %v", err)
